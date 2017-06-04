@@ -1,0 +1,48 @@
+{
+  "name": "Message",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "time":{
+      "type": "date",
+      "required": true,
+      "default": "$now"
+    },
+    "media_url": {
+      "type": "string"
+    },
+    "media_name": {
+      "type": "string"
+    },
+    "media_type": {
+      "type": "number",
+      "default": 0
+    },
+    "media_size": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "validations": [],
+  "relations": {
+    "client": {
+      "type": "belongsTo",
+      "model": "Client",
+      "foreignKey": ""
+    },
+    "chatroom": {
+      "type": "belongsTo",
+      "model": "Chatroom",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

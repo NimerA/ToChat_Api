@@ -1,0 +1,35 @@
+{
+  "name": "Relation",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "status": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    }
+  },
+  "validations": [],
+  "relations": {
+    "client_one": {
+      "type": "belongsTo",
+      "model": "Client",
+      "foreignKey": "client_one_id"
+    },
+    "client_two": {
+      "type": "belongsTo",
+      "model": "Client",
+      "foreignKey": "client_two_id"
+    },
+    "action_user": {
+      "type": "belongsTo",
+      "model": "Client",
+      "foreignKey": "action_user_id"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
