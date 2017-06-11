@@ -10,7 +10,7 @@
       "type": "string",
       "required": true
     },
-    "time":{
+    "time": {
       "type": "date",
       "required": true,
       "default": "$now"

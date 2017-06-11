@@ -40,28 +40,6 @@
       ]
     }
   },
-  "files": {
-    "loopback#static": [{
-      "name": "files",
-      "paths": ["/files"],
-      "params": "$!../files"
-    },
-    {
-      "name": "images",
-      "paths": ["/images"],
-      "params": "$!../files/images"
-    },
-    {
-      "name": "documents",
-      "paths": ["/documents"],
-      "params": "$!../files/documents"
-    },
-    {
-      "name": "audio",
-      "paths": ["/audio"],
-      "params": "$!../files/audio"
-    }]
-  },
   "final": {
     "loopback#urlNotFound": {}
   },
