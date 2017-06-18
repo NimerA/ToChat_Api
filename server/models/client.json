@@ -6,16 +6,21 @@
     "validateUpsert": true
   },
   "properties": {
-    "nickname": {
-      "type": "string"
-    },
-    "photo_url": {
+    "avatar": {
       "type": "string"
     },
     "isBlocked": {
       "type": "boolean",
       "default": false
+    },
+    "status": {
+      "type": "string",
+      "default": "online"
+    },
+    "mood": {
+      "type": "string"
     }
+
   },
   "validations": [],
   "relations": {
@@ -30,6 +35,20 @@
       "foreignKey": ""
     }
   },
-  "acls": [],
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    }
+  ],
+  "inheritAcls": false,
   "methods": {}
 }
