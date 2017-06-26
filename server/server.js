@@ -35,22 +35,23 @@ boot(app, __dirname, function(err) {
 
       socket.on('join', (roomId, user) => {
         console.log('joining roomId', roomId)
+        console.log('USER=>', user);
         socket.join(roomId)
         app.io.to(roomId).emit('message', {
           roomId,
           user,
-          userId: user.id,
+          userId: user.username,
           text: 'A user joined this room!',
           created: new Date()
         })
       })
 
       socket.on('sendMessage', (roomId, user, text) => {
-        console.log('sendMessage roomId', roomId, 'userId', user.id, 'text', text)
+        console.log('sendMessage roomId', roomId, 'userId', user.username, 'text', text)
         app.io.to(roomId).emit('message', {
           roomId,
           user,
-          userId: user.id,
+          userId: user.username,
           text: text,
           created: new Date()
         })
