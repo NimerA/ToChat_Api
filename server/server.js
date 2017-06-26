@@ -21,6 +21,7 @@ app.start = function() {
 
 
 
+
 // Bootstrap the application, configure models, datasources and middleware.
 // Sub-apps like REST API are mounted via boot scripts.
 boot(app, __dirname, function(err) {
@@ -33,27 +34,14 @@ boot(app, __dirname, function(err) {
     app.io.on('connection', (socket) => {
       console.log('a user connected')
 
-      socket.on('join', (roomId, user) => {
+      socket.on('join', (roomId, client) => {
         console.log('joining roomId', roomId)
-        console.log('USER=>', user);
         socket.join(roomId)
-        app.io.to(roomId).emit('message', {
-          roomId,
-          user,
-          userId: user.username,
-          text: 'A user joined this room!',
-          created: new Date()
-        })
       })
 
-      socket.on('sendMessage', (roomId, user, text) => {
-        console.log('sendMessage roomId', roomId, 'userId', user.username, 'text', text)
+      socket.on('sendMessage', (roomId, client, message) => {
         app.io.to(roomId).emit('message', {
-          roomId,
-          user,
-          userId: user.username,
-          text: text,
-          created: new Date()
+          message: message
         })
       })
 
@@ -63,7 +51,6 @@ boot(app, __dirname, function(err) {
     })
   }
 });
-
 var dataSource = app.dataSources.mysql; 
 dataSource.autoupdate(null, function (err){}); 
 
