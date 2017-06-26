@@ -16,7 +16,7 @@
     },
     "status": {
       "type": "string",
-      "default": "online"
+      "default": "offline"
     },
     "mood": {
       "type": "string"
